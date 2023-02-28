@@ -1,2 +1,1 @@
-# pong
-pygame pong for cpsc 4160
+# pong_game_eng
