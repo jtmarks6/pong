@@ -55,3 +55,24 @@ class Paddle:
 
     def draw(self):
         pygame.draw.rect(self.surface, self.white, self.paddle)
+
+class Score:
+    def __init__(self, surface: pygame.Surface, player1: bool =  True) -> None:
+        self.font = pygame.font.Font('freesansbold.ttf', 32)
+        self.score = 0
+        self.green = 0, 255, 0
+        self.surface = surface
+        self.text = self.font.render(str(self.score), True, self.green)
+        self.textRect = self.text.get_rect()
+        self.textRect.centerx = (surface.get_width() // 2)
+        if player1:
+            self.textRect.centerx -= 150
+        else:
+            self.textRect.centerx += 150
+
+    def increment(self):
+        self.score += 1
+        self.text = self.font.render(str(self.score), True, self.green)
+
+    def draw(self):
+        self.surface.blit(self.text, self.textRect)
