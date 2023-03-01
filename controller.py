@@ -1,5 +1,6 @@
 import pygame
 import sys
+import time
 from model import *
 from view import *
 
@@ -13,13 +14,18 @@ paddle1 = Paddle(surface, pygame.K_w, pygame.K_s)
 paddle2 = Paddle(surface, pygame.K_UP, pygame.K_DOWN, False)
 objects = [ball, paddle1, paddle2]
 bouncing = False
+last_time = time.time() * 1000
 
 while True:
+    game_time  = time.time() * 1000
+    if(game_time - last_time < 1000/60):
+        continue
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
 
     keys = pygame.key.get_pressed()
-    delta_time = pygame.time.get_ticks()
+    delta_time = game_time - last_time
     for i, obj in enumerate(objects):
         obj.move(delta_time, keys)
 
@@ -40,3 +46,13 @@ while True:
         bouncing = False
 
     update_display(surface, objects)
+    last_time = game_time
+
+
+pygame.display.set_caption("Pong")
+surface = pygame.display.set_mode(screen_size, flags=pygame.SCALED, vsync=1)
+font = pygame.font.Font('freesansbold.ttf', 32)
+
+text = font.render(str(score), True, green)
+textRect = text.get_rect()
+textRect.centerx = (width // 2)
