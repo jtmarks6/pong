@@ -13,6 +13,8 @@ Made by Jeremy Marks and Keaton Myers
 - Python Version: python 3.9.1
 - Pygame Version: 2.1.2
 
+### Start Game
+Run main.py file - `python main.py`
 
 ### Motivation
 
@@ -37,3 +39,5 @@ Depending on how the game needs to be expanded it could be fairly easy with how 
 
 The structure we have in place could fairly easily be applied to other projects. When creating the classes for the entities despite the fact that some were limited to the y plane we included the option to modify their x plane as well. Another thing we did was incorporate the ability to modify position with both acceleration and velocity so that either could be used and work on the objects depending on the programmers needs. What we could do but didn't that could help would be create a generalized function to assess the collision of two objects so that could be done more efficiently on projects with larger lists of objects.
 
+#### Classes and Functions
+![My Image](Classes_Functions.png)
